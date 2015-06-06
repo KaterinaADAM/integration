@@ -91,8 +91,11 @@ public class UIDocActivitySelector extends UIContainer implements UIPopupCompone
       UIPortletApplication uiApp = uiDocActivitySelector.getAncestorOfType(UIPortletApplication.class);
       UIDocumentSelector documentSelector = uiDocActivitySelector.getChild(UIDocumentSelector.class);
       String rawPath = documentSelector.getSeletedFile() ;
+      /**
+       * If file has not been selected.
+       */
       if(rawPath == null || rawPath.trim().length() <= 0) {
-        uiApp.addMessage(new ApplicationMessage("UIDocActivitySelector.msg.not-a-file", null, ApplicationMessage.WARNING));
+        uiApp.addMessage(new ApplicationMessage("UIComposer.msg.error.Must_select_file", null, ApplicationMessage.WARNING));
         ((PortalRequestContext) event.getRequestContext().getParentAppRequestContext()).ignoreAJAXUpdateOnPortlets(true);
         return;
       } else {
